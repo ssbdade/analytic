@@ -1,6 +1,7 @@
-import 'package:boilerplate/constants/dimension.dart';
+import 'package:boilerplate/ui/color_picker/color_picker_page.dart';
+import 'package:boilerplate/widgets/gridview.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:get/get.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required String title}) : super(key: key);
@@ -10,6 +11,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,74 +19,38 @@ class _MyHomePageState extends State<MyHomePage> {
         leading: const Icon(Icons.menu_rounded),
         title: const Text('Analytics'),
         actions: [
-          const Icon(Icons.search),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: width(context, 12)),
-          ),
-          const Icon(Icons.more_vert),
-        ],
-      ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: width(context, 10)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 10,
-            ),
-            const Padding(
-              padding: EdgeInsets.all(12.0),
-              child: Text('Weekly Stats',
-                style: TextStyle(
-                  fontSize: 16,
+          PopupMenuButton(
+            icon: const Icon(Icons.more_vert),
+            itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+              PopupMenuItem(
+                child: ListTile(
+                  leading: const Icon(Icons.dark_mode),
+                  title: const Text('Dark Mode'),
+                  onTap: () {
+                    Get.changeThemeMode(ThemeMode.dark);
+                  },
                 ),
               ),
-            ),
-            StaggeredGrid.count(
-              crossAxisCount: 2,
-              mainAxisSpacing: 2,
-              crossAxisSpacing: 2,
-              children: [
-                StaggeredGridTile.count(
-                  crossAxisCellCount: 1,
-                  mainAxisCellCount: 134/234,
-                  child: Card(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text('Marketing'),
-                        )
-                      ],
-                    ),
-                  ),
+              PopupMenuItem(
+                child: ListTile(
+                  leading: const Icon(Icons.light_mode),
+                  title: const Text('Light Mode'),
+                  onTap: () {
+                    Get.changeThemeMode(ThemeMode.light);
+                  },
                 ),
-                const StaggeredGridTile.count(
-                  crossAxisCellCount: 1,
-                  mainAxisCellCount: 262/234,
-                  child: Card(),
-                ),
-                const StaggeredGridTile.count(
-                  crossAxisCellCount: 1,
-                  mainAxisCellCount: 262/234,
-                  child: Card(),
-                ),
-                const StaggeredGridTile.count(
-                  crossAxisCellCount: 1,
-                  mainAxisCellCount: 168/234,
-                  child: Card(),
-                ),
-                const StaggeredGridTile.count(
-                  crossAxisCellCount: 1,
-                  mainAxisCellCount: 0.85,
-                  child: const Card(),
-                ),
-              ],
-            ),
-          ],
-        ),
-      )
-      );
+              ),
+            ],
+          ),
+        ],
+      ),
+      body: const AppGridView(),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          Get.to(ColorPickerPage());
+        },
+      ),
+    );
   }
 }

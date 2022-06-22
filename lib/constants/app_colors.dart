@@ -4,12 +4,9 @@ const Color shrinePink50 = Color(0xFFFEEAE6);
 const Color shrinePink100 = Color(0xFFFEDBD0);
 const Color shrinePink300 = Color(0xFFFBB8AC);
 const Color shrinePink400 = Color(0xFFEAA4A4);
-
 const Color shrineBrown900 = Color(0xFF442B2D);
 const Color shrineBrown600 = Color(0xFF7D4F52);
-
 const Color shrineErrorRed = Color(0xFFC5032B);
-
 const Color shrineSurfaceWhite = Color(0xFFFFFBFA);
 const Color shrineBackgroundWhite = Colors.white;
 
@@ -23,3 +20,9 @@ const Color darkBlue700 = Color(0xFF3700B3);
 const Color darkError = Color(0xFFCF6679);
 const Color darkBlack12 = Color(0xFF121212);
 Color darkBlack1dp = Color.alphaBlend(Colors.black, darkBlack12);
+
+const Color lightBlue500 = Color(0xFF6200EE);
+const Color lightBlue700 = Color(0xFF3700B3);
+const Color lightTeal200 = Color(0xFF03DAC6);
+const Color lightTeal900 = Color(0xFF018786);
+const Color lightError = Color(0xFFB00020);

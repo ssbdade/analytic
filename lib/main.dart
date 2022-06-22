@@ -1,19 +1,23 @@
 import 'package:boilerplate/constants/app_theme.dart';
 import 'package:boilerplate/ui/home/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  runApp(MyApp());
 }
+bool isDarkMode = true;
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
-      theme: CustomTheme().buildDarkTheme(),
+      themeMode: Get.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+      theme: CustomTheme().buildLightTheme(),
+      darkTheme: CustomTheme().buildDarkTheme(),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
